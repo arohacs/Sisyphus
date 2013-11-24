@@ -55,7 +55,23 @@ public class HighscoreController : MonoBehaviour {
 		string[] score0 = GetPlayerNameAndScore(_highscores[0]);
 		highscoreName0.text = score0[0];
 		highscoreScore0.text = score0[1];
-		
+
+		string[] score1 = GetPlayerNameAndScore(_highscores[0]);
+		highscoreName1.text = score1[0];
+		highscoreScore1.text = score1[1];
+
+		string[] score2 = GetPlayerNameAndScore(_highscores[0]);
+		highscoreName2.text = score2[0];
+		highscoreScore2.text = score2[1];
+
+		string[] score3 = GetPlayerNameAndScore(_highscores[0]);
+		highscoreName3.text = score3[0];
+		highscoreScore3.text = score3[1];
+
+		string[] score4 = GetPlayerNameAndScore(_highscores[0]);
+		highscoreName4.text = score4[0];
+		highscoreScore4.text = score4[1];
+
 		// ...
 		// ...
 		// ...
