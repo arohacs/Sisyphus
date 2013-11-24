@@ -3,13 +3,14 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public void IncrementIncline(float incline) {
 	
+		transform.Rotate(Vector3.forward, -0.5f);
 	}
+	
+	
 }

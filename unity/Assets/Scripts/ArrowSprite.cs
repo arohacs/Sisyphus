@@ -12,13 +12,19 @@ public enum ArrowType
 }
 public class ArrowSprite : MonoBehaviour {
 	
-	public float moveSpeed = 10.0f;
+	public float moveSpeed = 0.4f;
+	private bool isAlive;
 	private UISprite _sprite;
 	
+	private HitboxController _hitboxController;
+	private GameController _gameController;
 	private ArrowType _arrowType = ArrowType.UNDEFINED;
 	
 	void Awake () {
 		_sprite = GetComponent<UISprite>();
+		_hitboxController = GameObject.FindGameObjectWithTag("HitBox").GetComponent<HitboxController>();
+		_gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		isAlive = true;
 	}
 	
 	
@@ -49,10 +55,30 @@ public class ArrowSprite : MonoBehaviour {
 		
 	}
 	
-	void Update()
+	private void Kill()
 	{
+		isAlive = false;
+		
+		
+		Destroy(gameObject);
+	}
 	
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.tag == "Deadzone") {
+			_hitboxController.DeactivateArrow(gameObject);
+			_gameController.Miss();
+			Kill();	
+		} else if (col.gameObject.tag == "HitBox") {
+			_hitboxController.ActivateArrow(gameObject);
+		} 
+	}
 
+	void LateUpdate()
+	{
+		if(isAlive) {
+			transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+		} 
+			
 	}
 	
 
